@@ -38,4 +38,7 @@ This is the license section.
 This is the acknowledgements section.
 
 ## Contact Information
-This is the contact information section.
+For any inquiries or feedback, please contact:
+
+- Your Name: 22f3000646@ds.study.iitm.ac.in
+- Project Repository: https://github.com/22f300646/The-Influence-Mart-app
