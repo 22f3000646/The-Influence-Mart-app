@@ -14,10 +14,28 @@ Table of Contents
 
 ## Project Overview
 
-InfluenceForge is an influencer management application developed as part of the diploma level project at IIT Madras for the course MAD 1. The app connects brands with social media influencers, facilitating seamless collaborations and campaigns.
+Influence mart is a platform designed to connect sponsors with social media influencers to facilitate advertisement campaigns and sponsorships. This project is developed as part of the diploma level project at IIT Madras for the course Modern Application Development I (MAD 1).
+
+The platform allows sponsors to create campaigns and ad requests, search for influencers, and manage campaign statistics. Influencers can accept or reject ad requests, negotiate terms, and search for ongoing public campaigns.
 
 ## Features 
-This is the features section.
+
+- Admin Dashboard:
+
+Monitor users and campaigns
+View application statistics
+Flag inappropriate campaigns/users
+- Sponsors:
+
+Create, update, and delete campaigns
+Create and manage ad requests
+Search for influencers based on niche, reach, etc.
+- Influencers:
+
+Accept/reject ad requests
+Negotiate ad request terms
+Search for public campaigns
+Update profile page
 
 ## Installation
 This is the installation section.
@@ -40,5 +58,5 @@ This is the acknowledgements section.
 ## Contact Information
 For any inquiries or feedback, please contact:
 
-- Your Name: 22f3000646@ds.study.iitm.ac.in
+- Akshay kumar: 22f3000646@ds.study.iitm.ac.in
 - Project Repository: https://github.com/22f300646/The-Influence-Mart-app
