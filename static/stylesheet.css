@@ -69,3 +69,18 @@ h4{ margin: 0;
     background-color:rgba(90, 21, 12, 0.753);
 
 }
+
+/* .header-registration{
+    background-color: #8fc4b7;
+} */
+
+.register-form{
+    background-color:#4835d4;
+    display:inline-block;
+    border-radius:3%;
+    margin-top:20px;
+    margin-right:470px;
+    margin-left:470px;
+    margin-bottom:55px;
+
+}
