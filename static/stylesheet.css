@@ -1,0 +1,56 @@
+
+
+.logo {
+        font-size: 64px;
+        font-weight: bold;
+        color: #571d06;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        text-align:center;
+        margin:0px;
+    }
+    
+    
+    .form{
+        display:inline-block;
+        text-align:center;
+        margin-left:50px;
+        text-align:center;
+        border:solid 2px rgb(0, 0, 0);
+        margin-bottom:30px;
+        background: linear-gradient(to right, rgb(238, 119, 36), rgb(216, 54, 58), rgb(221, 54, 117), rgb(180, 69, 147)); 
+    }
+    .form1{
+        font-weight:bold;
+        margin:90px;
+        margin-top:20px;
+        margin-bottom: 30px;
+        
+
+        
+    }
+   
+    .button1{background: linear-gradient(to right, rgb(238, 119, 36), rgb(216, 54, 58), rgb(221, 54, 117), rgb(180, 69, 147));
+
+    }
+    .subclass{
+        margin-top:100px;
+        margin-bottom:150px;
+    }
+
+    .footer{background: linear-gradient(to right, rgb(238, 119, 36), rgb(216, 54, 58), rgb(221, 54, 117), rgb(180, 69, 147));
+
+    }     
+    .footer-head {
+        text-align: center;
+    }
+
+.header{
+    background-image: url(BG.png);
+        margin:0px;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    /* Add any other styles you need for the h1 element */
+}

@@ -44,7 +44,12 @@ This is the installation section.
 This is the usage section.
 
 ## Technologies Used
-This is the technologies used section.
+- html
+- css
+- jinja
+- flask
+- sql lite
+
 
 ## Contributing
 This is the contributing section.
