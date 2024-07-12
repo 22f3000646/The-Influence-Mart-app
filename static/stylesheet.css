@@ -52,5 +52,20 @@
 h1 {
     margin: 0;
     padding: 0;
-    /* Add any other styles you need for the h1 element */
+
+}
+.headeradmin{
+    background-image:url(adminbg.png);
+}
+h4{ margin: 0;
+    padding: 0;
+}
+.form-admin{display:inline-block;
+    text-align:center;
+    margin-left:800px;
+    text-align:center;
+    border:solid 2px rgb(0, 0, 0);
+    margin-bottom:30px;
+    background-color:rgba(90, 21, 12, 0.753);
+
 }
