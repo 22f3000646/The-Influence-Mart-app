@@ -9,10 +9,15 @@ def Admin():
 @app.route("/influencer")
 def influencer():
     return render_template("influencer_login.html")
-
 @app.route("/sponsor")
 def sponsor():
     return render_template("sponsor login.html")
+@app.route("/sponsor_registration")
+def register1():
+    return render_template("sponsor_registration.html")
+@app.route("/register_influencer")
+def register2():
+    return render_template("/influencer_registration.html")
 
 if __name__=="__main__":
     app.run(debug=True)

@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="../static/stylesheet.css">
 
 </head>
-<body style="background-image:url(../static/influencerbg.png);">
-    <div style="display:inline-block; background-color:rgb(119, 182, 236);">
-        <h2 style="font-style:italic;font-size:40px;margin-top:20px;margin-bottom:0px;">Influencer Registration Form</h2>
+<body style="background-image:url(../static/BG.png);">
+    <div style="background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));  margin-top:50px;margin-bottom:40px;border-radius:20px; display:inline-block;">
+        <h2 style="font-style:italic;font-size:40px;margin-top:20px;margin-bottom:0px; margin-left:35px;">Influencer Registration Form</h2>
 
 <form >
     <div class="form1">
@@ -28,8 +28,31 @@
     </div>
     
     <div class="form1">
-        <label for="socialMedia">Social Media Profile:</label>
-        <input type="text" id="socialMedia" name="socialMedia"><br><br>
+        <label >Social Media Profile:</label>
+        
+        <div class="form1">
+            <label for="instagram" style="margin-right: 10px;">Instagram:</label>
+            <input type="checkbox" id="instagram" name="social_media[]" value="Instagram">
+            <input type="number" id="instagram_followers" name="instagram_followers" placeholder="Number of Followers" style="width: 100%; margin-top: 5px;">
+        </div>
+        
+        <div class="form1">
+            <label for="facebook" style="margin-right: 10px;">Facebook:</label>
+            <input type="checkbox" id="facebook" name="social_media[]" value="Facebook">
+            <input type="number" id="facebook_followers" name="facebook_followers" placeholder="Number of Followers" style="width: 100%; margin-top: 5px;">
+        </div>
+        
+        <div class="form1">
+            <label for="youtube" style="margin-right: 10px;">YouTube:</label>
+            <input type="checkbox" id="youtube" name="social_media[]" value="YouTube">
+            <input type="number" id="youtube_followers" name="youtube_followers" placeholder="Number of Followers" style="width: 100%; margin-top: 5px;">
+        </div>
+        
+        <div class="form1">
+            <label for="snapchat" style="margin-right: 10px;">Snapchat:</label>
+            <input type="checkbox" id="snapchat" name="social_media[]" value="Snapchat">
+            <input type="number" id="snapchat_followers" name="snapchat_followers" placeholder="Number of Followers" style="width: 100%; margin-top: 5px;">
+        </div>
     </div>
     
     <div class="form1">
@@ -52,9 +75,11 @@
         <label for="termsCheckbox">I agree to the Terms and Conditions</label><br><br>
     </div>
     
-    <button type="submit">Submit</button>
+    <button style="text-align:center; margin-left:300px; margin-bottom:30px;;" type="submit">Submit</button>
+    <p class="form1">Already have an account? <a href="/influencer">Sign in</a></p>
 </form>
 
     </div>   
 </body>
 </html>
+
