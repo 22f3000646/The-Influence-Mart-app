@@ -18,6 +18,9 @@ def register1():
 @app.route("/register_influencer")
 def register2():
     return render_template("/influencer_registration.html")
+@app.route("/admin_dashboard")
+def dash():
+    return render_template("/base.html",user="akshay")
 
 if __name__=="__main__":
     app.run(debug=True)
