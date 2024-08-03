@@ -1,0 +1,48 @@
+{% extends 'base_sponsor_dashboard.html' %}
+{% block title %}profile{% endblock %}
+{% block content %}
+<h2>Active Campaigns</h2>
+<table>
+    <thead>
+        <th>
+            Campaign name 
+        </th>
+        <th>
+            link 
+        </th>
+        <th>
+            requests
+        </th>
+        <th>
+            opening date 
+        </th>
+        <th>
+            closing date 
+        </th>
+    </thead>
+    {% for campaigns in campaigns %}
+    <tr>
+    <td>
+        {{campaigns.campaigns}}
+    </td>
+    <td>
+        <a href="#">See campaign</a>
+    </td>
+    <td>
+        <a href="#"> {{campaigns.count}} </a>
+    </td>
+    <td>
+        <a href="#">See all</a>
+    </td>
+    <td>
+        <a href="#">{{campaigns.open_date}}</a>
+    </td>
+    <td>
+        <a href="#">{{campaigns.closing_date}}</a>
+    </td>
+</tr>
+    {% endfor %}
+</table>
+<hr>
+<h2>Closed campaigns</h2>
+{% endblock %}

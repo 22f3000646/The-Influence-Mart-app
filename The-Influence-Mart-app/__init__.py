@@ -1,9 +1,9 @@
 from flask import Flask,render_template
-# from flask_sqlalchemy import SQLAlchemy
-# from flask_login import LoginManager
-# from admin import admin_bp
-# from influencer import influencer_bp
-# from sponsors import sponsor_bp
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+from admin import admin_bp
+from influencer import influencer_bp
+from sponsors import sponsor_bp
 app = Flask(__name__)
 @app.route("/")
 def home():

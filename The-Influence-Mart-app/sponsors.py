@@ -6,3 +6,6 @@ def sponsor():
 @sponsor_bp.route("/register")
 def register():
     return render_template("sponsor_registration.html")
+@sponsor_bp.route("/profile")
+def profile():
+    return render_template("sponsor_profile.html")
