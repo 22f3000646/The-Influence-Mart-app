@@ -1,0 +1,20 @@
+{% extends 'admin dashboard.html' %}
+{% block title %}find{% endblock %}
+{% block content %}
+<table>
+    <thead>
+          <tr>
+            <th>Name of sponsors</th>
+          </tr>
+    </thead>
+    <tbody>
+        {% for users in users %}
+          <tr>
+            <td>
+                 {{users.username}}
+            </td>
+          </tr>
+          {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

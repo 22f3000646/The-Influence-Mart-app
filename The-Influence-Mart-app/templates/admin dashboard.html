@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}admin dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="../static/stylesheet.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header{
+            margin-bottom:50px;
+            border:solid black 1px;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .card {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .card h5 {
+            margin: 0;
+        }
+        .card p {
+            font-size: 24px;
+            margin: 10px 0 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .box{
+            margin:60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 style="display:inline-block;">Admin Dashboard</h1>
+        <div style="display:inline-block; margin-left:1000px; ">
+         <a href="/dashboard"><button class="button1">Info</button></a> |
+         <a href="/find"><button class="button1">Find</button></a> |
+         <a href="/stats"><button class="button1">Stats</button></a> |
+         <a href="/admin"><button class="button1">Log out</button></a> |
+        </div>
+        <hr style="width:100%">
+        <h1>Welcome {{Admin}}</h1>
+    </div>
+    <div class="row">
+        <div class="card">
+            <h5>Active Users</h5>
+            <p>{{ active_users_count }}</p>
+        </div>
+        <div class="card">
+            <h5>Public Campaigns</h5>
+            <p>{{ public_campaigns_count }}</p>
+        </div>
+        <div class="card">
+            <h5>Private Campaigns</h5>
+            <p>{{ private_campaigns_count }}</p>
+        </div>
+        <div class="card">
+            <h5>Ad Requests</h5>
+            <p>{{ ad_requests_count }}</p>
+        </div>
+    </div>
+    {% block content %}
+    <div class="box">
+    <h2>Flagged Users</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Reason</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in flagged_users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.reason }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="box">
+    <h2>Flagged Campaigns</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Campaign Name</th>
+                <th>Reason</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for campaign in flagged_campaigns %}
+            <tr>
+                <td>{{ campaign.name }}</td>
+                <td>{{ campaign.reason }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+{% endblock %}
+</body>
+</html>

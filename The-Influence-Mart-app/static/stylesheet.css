@@ -1,0 +1,81 @@
+
+
+.logo {
+        font-size: 64px;
+        font-weight: bold;
+        color: #571d06;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        text-align:center;
+        margin:0px;
+    }
+    
+    
+    .form{
+        display:inline-block;
+        text-align:center;
+        margin-left:50px;
+        margin-top: 20px;
+        text-align:center;
+        border:solid 2px rgb(0, 0, 0);
+        margin-bottom:30px;
+        background: linear-gradient(to right, rgb(238, 119, 36), rgb(216, 54, 58), rgb(221, 54, 117), rgb(180, 69, 147)); 
+    }
+    .form1{
+        font-weight:bold;
+        margin:90px;
+        margin-top:20px;
+        margin-bottom: 30px;
+        
+
+        
+    }
+   
+    .button1{background: linear-gradient(to right, rgb(238, 119, 36), rgb(216, 54, 58), rgb(221, 54, 117), rgb(180, 69, 147));
+
+    }
+    .subclass{
+        margin-top:100px;
+        margin-bottom:150px;
+    }
+
+    .footer{background: linear-gradient(to right, rgb(238, 119, 36), rgb(216, 54, 58), rgb(221, 54, 117), rgb(180, 69, 147));
+
+    }     
+    .footer-head {
+        text-align: center;
+    }
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-style:italic;
+
+}
+
+h4{ margin: 0;
+    padding: 0;
+}
+.form-admin{display:inline-block;
+    text-align:center;
+    margin-left:800px;
+    text-align:center;
+    border:solid 2px rgb(0, 0, 0);
+    margin-bottom:30px;
+    background-color:rgba(90, 21, 12, 0.753);
+
+}
+
+/* .header-registration{
+    background-color: #8fc4b7;
+} */
+
+.register-form{
+    background-color:#4835d4;
+    display:inline-block;
+    border-radius:3%;
+    margin-top:20px;
+    margin-right:470px;
+    margin-left:470px;
+    margin-bottom:55px;
+
+}
