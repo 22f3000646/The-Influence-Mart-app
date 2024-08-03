@@ -1,0 +1,19 @@
+{% extends 'base_sponsor_dashboard.html' %}
+{% block title %}profile{% endblock %}
+{% block content %}
+<h2>Active Campaigns</h2>
+<table>
+    <thead>
+        <th>
+            Campaign name 
+        </th>
+    </thead>
+    {% for campaigns in campaigns %}
+    <tr>
+    <td>
+        {{campaigns.campaigns}}
+    </td>
+</tr>
+    {% endfor %}
+</table>
+{% endblock %}
