@@ -49,7 +49,7 @@ This is the usage section.
 - jinja
 - flask
 - sql lite
-
+-flask_sql Alchemy
 
 ## Contributing
 This is the contributing section.
