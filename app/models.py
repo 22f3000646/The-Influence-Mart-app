@@ -20,15 +20,3 @@ class User(db.Model):
 
     def check_password(self, password):
         return bcrypt.checkpw(password.encode('utf-8'), self.password.encode('utf-8'))
-
-def add_user():
-    with app.app_context():  # Ensure this runs within the app context
-        db.create_all()  # Create tables if they don't exist
-        if not User.query.filter_by(username='akshay').first():  # Check if user already exists
-            user1 = User('akshay', 'asdfg', 'admin')
-            db.session.add(user1)
-            db.session.commit()
-
-if __name__ == "__main__":
-    add_user()  # Call the function to add a user
-    app.run(debug=True)
