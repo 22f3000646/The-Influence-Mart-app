@@ -1,12 +1,8 @@
-from flask import Flask,render_template,Blueprint,request,redirect,url_for
-from config import Config 
+from flask import Flask,render_template,Blueprint,request,redirect,url_for,session,flash
 from models import db,User
-app=Flask(__name__)
+admin_bp=Blueprint("Admin",__name__)
 
-app.config.from_object(Config)  # Load the configuration from Config class
-db.init_app(app)
-
-admin_bp=Blueprint("admin",__name__)
+admin_bp.secret_key='asdfg@12345t'
 @admin_bp.route("/",methods=['GET','POST'])
 def Admin():
     if request.method=='POST':
@@ -14,20 +10,39 @@ def Admin():
         passw=request.form['password']
         user = User.query.filter_by(username=user1).first()
         if user and user.check_password(passw):
-            return render_template("Admin dashboard.html",Admin=user.username)
+            session['user']=user.username
+            return redirect(url_for('dashboard'))
         else:
-             # Handle invalid credentials
-            return f"Invalid credentials,{user.passw}", 401
-        
+            flash('Invalid Credentials')
+            return redirect(url_for('Admin'))
+
+            
     return render_template("Adminlogin.html")
 
 @admin_bp.route("/dashboard")
 def dashboard():
-    return render_template("/admin dashboard.html")
+    if 'user' not in session:
+        return redirect('/')
+    
+    user=User.query.filter_by(username=session['user']).first()
+    return render_template("/admin dashboard.html",Admin=user.username)
 @admin_bp.route("/find")
 def dashboard1():
+    if 'user' not in session:
+        return redirect('/')
     return render_template("/admin_find.html")
 @admin_bp.route("/stats")
 def dashboard2():
+    if 'user' not in session:
+        return redirect('/')
     return render_template("/admin_stats.html")
+
+
+@admin_bp.route('/logout')
+def logout():
+    session.pop('user',None)
+    return redirect('/')
+
+
+
 
