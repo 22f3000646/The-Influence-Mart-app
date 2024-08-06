@@ -11,10 +11,10 @@ def Admin():
         user = User.query.filter_by(username=user1).first()
         if user and user.check_password(passw):
             session['user']=user.username
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('Admin.dashboard'))
         else:
             flash('Invalid Credentials')
-            return redirect(url_for('Admin'))
+            return redirect(url_for('Admin.Admin'))
 
             
     return render_template("Adminlogin.html")
@@ -22,26 +22,26 @@ def Admin():
 @admin_bp.route("/dashboard")
 def dashboard():
     if 'user' not in session:
-        return redirect('/')
+        return redirect(url_for('Admin.Admin'))
     
     user=User.query.filter_by(username=session['user']).first()
     return render_template("/admin dashboard.html",Admin=user.username)
 @admin_bp.route("/find")
 def dashboard1():
     if 'user' not in session:
-        return redirect('/')
+        return redirect(url_for('Admin.Admin'))
     return render_template("/admin_find.html")
 @admin_bp.route("/stats")
 def dashboard2():
     if 'user' not in session:
-        return redirect('/')
+        return redirect(url_for('Admin.Admin'))
     return render_template("/admin_stats.html")
 
 
 @admin_bp.route('/logout')
 def logout():
     session.pop('user',None)
-    return redirect('/')
+    return redirect(url_for('Admin.Admin'))
 
 
 
