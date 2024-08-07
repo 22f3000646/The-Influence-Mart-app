@@ -11,10 +11,15 @@
     <div style="background: linear-gradient(to right, rgb(238, 119, 36), rgb(216, 54, 58), rgb(221, 54, 117), rgb(180, 69, 147));  margin-top:50px;margin-bottom:40px;border-radius:20px; display:inline-block;">
         <h2 style="font-style:italic;font-size:40px;margin-top:20px;margin-bottom:0px; margin-left:35px;">Influencer Registration Form</h2>
 
-<form >
+<form method="POST" action="/influencer/register">
     <div class="form1">
         <label for="fullName">Full Name:</label>
         <input type="text" id="fullName" name="fullName" required><br><br>
+    </div>
+
+    <div class="form1">
+        <label for="Username">User Name:</label>
+        <input type="text" id="username" name="username" required><br><br>
     </div>
     
     <div class="form1">
@@ -30,7 +35,7 @@
     <div class="form1">
         <label >Social Media Profile:</label>
         
-        <div class="form1">
+        <div class="form1" >
             <label for="instagram" style="margin-right: 10px;">Instagram:</label>
             <input type="checkbox" id="instagram" name="social_media[]" value="Instagram">
             <input type="number" id="instagram_followers" name="instagram_followers" placeholder="Number of Followers" style="width: 100%; margin-top: 5px;">
