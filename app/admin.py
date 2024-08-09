@@ -1,9 +1,9 @@
 from flask import Flask,render_template,Blueprint,request,redirect,url_for,session,flash
 from models import db,User
-admin_bp=Blueprint("Admin",__name__)
+admin=Blueprint("Admin",__name__)
 
-admin_bp.secret_key='asdfg@12345t'
-@admin_bp.route("/",methods=['GET','POST'])
+admin.secret_key='asdfg@12345t'
+@admin.route("/",methods=['GET','POST'])
 def Admin():
     if request.method=='POST':
         user1=request.form['username']
@@ -19,26 +19,26 @@ def Admin():
             
     return render_template("Adminlogin.html")
 
-@admin_bp.route("/dashboard")
+@admin.route("/dashboard")
 def dashboard():
     if 'user' not in session:
         return redirect(url_for('Admin.Admin'))
     
     user=User.query.filter_by(username=session['user']).first()
     return render_template("/admin dashboard.html",Admin=user.username)
-@admin_bp.route("/find")
+@admin.route("/find")
 def dashboard1():
     if 'user' not in session:
         return redirect(url_for('Admin.Admin'))
     return render_template("/admin_find.html")
-@admin_bp.route("/stats")
+@admin.route("/stats")
 def dashboard2():
     if 'user' not in session:
         return redirect(url_for('Admin.Admin'))
     return render_template("/admin_stats.html")
 
 
-@admin_bp.route('/logout')
+@admin.route('/logout')
 def logout():
     session.pop('user',None)
     return redirect(url_for('Admin.Admin'))

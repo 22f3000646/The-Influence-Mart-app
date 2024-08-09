@@ -8,10 +8,20 @@
 
 </head>
 <body style="background-image:url(../static/BG.png);">
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
     <div style="background: linear-gradient(to right, rgb(238, 119, 36), rgb(216, 54, 58), rgb(221, 54, 117), rgb(180, 69, 147));  margin-top:50px;margin-bottom:40px;border-radius:20px; display:inline-block;">
         <h2 style="font-style:italic;font-size:40px;margin-top:20px;margin-bottom:0px; margin-left:35px;">Influencer Registration Form</h2>
 
-<form method="POST" action="/influencer/register">
+<form method="POST" action="/">
     <div class="form1">
         <label for="fullName">Full Name:</label>
         <input type="text" id="fullName" name="fullName" required><br><br>
@@ -20,6 +30,11 @@
     <div class="form1">
         <label for="Username">User Name:</label>
         <input type="text" id="username" name="username" required><br><br>
+    </div>
+
+    <div class="form1">
+        <label for="password">Password:</label>
+        <input type="text" id="password" name="password" required><br><br>
     </div>
     
     <div class="form1">
@@ -33,41 +48,28 @@
     </div>
     
     <div class="form1">
-        <label >Social Media Profile:</label>
-        
-        <div class="form1" >
-            <label for="instagram" style="margin-right: 10px;">Instagram:</label>
-            <input type="checkbox" id="instagram" name="social_media[]" value="Instagram">
-            <input type="number" id="instagram_followers" name="instagram_followers" placeholder="Number of Followers" style="width: 100%; margin-top: 5px;">
-        </div>
-        
-        <div class="form1">
-            <label for="facebook" style="margin-right: 10px;">Facebook:</label>
-            <input type="checkbox" id="facebook" name="social_media[]" value="Facebook">
-            <input type="number" id="facebook_followers" name="facebook_followers" placeholder="Number of Followers" style="width: 100%; margin-top: 5px;">
-        </div>
-        
-        <div class="form1">
-            <label for="youtube" style="margin-right: 10px;">YouTube:</label>
-            <input type="checkbox" id="youtube" name="social_media[]" value="YouTube">
-            <input type="number" id="youtube_followers" name="youtube_followers" placeholder="Number of Followers" style="width: 100%; margin-top: 5px;">
-        </div>
-        
-        <div class="form1">
-            <label for="snapchat" style="margin-right: 10px;">Snapchat:</label>
-            <input type="checkbox" id="snapchat" name="social_media[]" value="Snapchat">
-            <input type="number" id="snapchat_followers" name="snapchat_followers" placeholder="Number of Followers" style="width: 100%; margin-top: 5px;">
-        </div>
+        <label for="Youtube">youtube link:</label>
+        <input type="text"  name="youtube"><br><br>
+    </div>
+
+    <div class="form1">
+        <label for="Facebook">facebook link:</label>
+        <input type="text"  name="Facebook"><br><br>
+    </div>
+    
+    <div class="form1">
+        <label for="instagram">instagram link:</label>
+        <input type="text"  name="instagram"><br><br>
+    </div>
+
+    <div class="form1">
+        <label for="snapchat">snapchat link:</label>
+        <input type="text"  name="snapchat"><br><br>
     </div>
     
     <div class="form1">
         <label for="category">Category/Niche:</label>
         <input type="text" id="category" name="category"><br><br>
-    </div>
-    
-    <div class="form1">
-        <label for="followers">Number of Followers:</label>
-        <input type="number" id="followers" name="followers"><br><br>
     </div>
     
     <div class="form1">
