@@ -1,5 +1,5 @@
 from flask import Flask,render_template,Blueprint,request,redirect,url_for,session,flash
-from models import db,User
+from models import *
 admin=Blueprint("Admin",__name__)
 
 admin.secret_key='asdfg@12345t'
@@ -8,7 +8,7 @@ def Admin():
     if request.method=='POST':
         user1=request.form['username']
         passw=request.form['password']
-        user = User.query.filter_by(username=user1).first()
+        user = Admin.query.filter_by(username=user1).first()
         if user and user.check_password(passw):
             session['user']=user.username
             return redirect(url_for('Admin.dashboard'))
