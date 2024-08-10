@@ -1,19 +1,29 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,SubmitField,DateField,TextAreaField,IntegerField,SelectField
+from wtforms import StringField,PasswordField,SubmitField,DateField,TextAreaField,IntegerField,BooleanField
 from wtforms.validators import DataRequired,Email,Length,EqualTo
 
 class Registeration(FlaskForm):
+    full_name = StringField('Username',validators=[DataRequired(),Length(min=4,max=20)]) 
     username = StringField('Username',validators=[DataRequired(),Length(min=8,max=20)])
     email = StringField('Email',validators=[DataRequired(),Email()])
-    password = PasswordField('Password',validators=[DataRequired(),Length(min=8,max=20)])
-    confirm_password = PasswordField('Confirm Password',validators =[DataRequired(),EqualTo('Password',message='both password should be same')])
-    sub,it =SubmitField('Register')
-    
-class LoginForm(FlaskForm):
-    username = StringField('Username',validators=[DataRequired()])
-    password = PasswordField('Password',validators=[DataRequired()])
-    submit = SubmitField('Login')
-    
+    phone = IntegerField('Phone', validators=[DataRequired()])
+    bio = TextAreaField('Bio', validators=[DataRequired()])
+    niche = StringField('Niche', validators=[DataRequired()])
+    platform = StringField('Platform') 
+    follower_count = IntegerField('Follower Count') 
+    password = PasswordField('password',validators=[DataRequired(),Length(min=8,max=20)])
+    confirm_password = PasswordField('Confirm Password',validators =[DataRequired(),EqualTo('password',message='both password should be same')])
+    submit =SubmitField('Register')
+
+class sponsor_registration(FlaskForm):
+    name = StringField('name',validators=[DataRequired(),Length(min=4,max=20)])
+    username = StringField('Username',validators=[DataRequired(),Length(min=8,max=20)])
+    email = StringField('Email',validators=[DataRequired(),Email()])
+    phone = IntegerField('Phone', validators=[DataRequired()])
+    password = PasswordField('password',validators=[DataRequired(),Length(min=8,max=20)])
+    iAgree = BooleanField('I agree to the terms and conditions', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm Password',validators =[DataRequired(),EqualTo('password',message='both password should be same')])    
+    submit =SubmitField('Sign up')
 class CampaignForm(FlaskForm):
     campaign_title = StringField('Campaign Title',validators=[DataRequired(),Length(max=30)])
     category = StringField('Category',validators=[Length(max=10)])

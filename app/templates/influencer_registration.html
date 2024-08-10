@@ -20,72 +20,92 @@
 
     <div style="background: linear-gradient(to right, rgb(238, 119, 36), rgb(216, 54, 58), rgb(221, 54, 117), rgb(180, 69, 147));  margin-top:50px;margin-bottom:40px;border-radius:20px; display:inline-block;">
         <h2 style="font-style:italic;font-size:40px;margin-top:20px;margin-bottom:0px; margin-left:35px;">Influencer Registration Form</h2>
+    <div class ='form'>
+        <form method="POST" action="{{ url_for('influencer.registration') }}">
+            {{ form.hidden_tag() }}
+            <div class="form1">
+                <label for="full_name">Full Name</label>
+                {{ form.full_name(class="form-control") }}
+                {% if form.full_name.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.full_name.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form1">
+                <label for="username">Username</label>
+                {{ form.username(class="form-control") }}
+                {% if form.username.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form1">
+                <label for="password">Password</label>
+                {{ form.password(class="form-control") }}
+                {% if form.password.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
 
-<form method="POST" action="/">
-    <div class="form1">
-        <label for="fullName">Full Name:</label>
-        <input type="text" id="fullName" name="fullName" required><br><br>
-    </div>
+            <div class="form1">
+                <label for="confirm_password">Confirm Password</label>
+                {{ form.confirm_password(class="form-control") }}
+                {% if form.confirm_password.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.confirm_password.errors[0] }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form1">
+                <label for="email">Email</label>
+                {{ form.email(class="form-control") }}
+                {% if form.email.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.email.errors[0] }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form1">
+                <label for="phone">Phone Number</label>
+                {{ form.phone(class="form-control") }}
+                {% if form.phone.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.phone.errors[0] }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form1">
+                <label for="bio">Bio</label>
+                {{ form.bio(class="form-control") }}
+                {% if form.bio.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.bio.errors[0] }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form1">
+                <label for="niche">Niche</label>
+                {{ form.niche(class="form-control") }}
+                {% if form.niche.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.niche.errors[0] }}
+                    </div>
+                {% endif %}
+            </div>
+            {{ form.submit(class="button1") }}
+        </form>
 
-    <div class="form1">
-        <label for="Username">User Name:</label>
-        <input type="text" id="username" name="username" required><br><br>
     </div>
-
-    <div class="form1">
-        <label for="password">Password:</label>
-        <input type="text" id="password" name="password" required><br><br>
-    </div>
-    
-    <div class="form1">
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email" required><br><br>
-    </div>
-    
-    <div class="form1">
-        <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone"><br><br>
-    </div>
-    
-    <div class="form1">
-        <label for="Youtube">youtube link:</label>
-        <input type="text"  name="youtube"><br><br>
-    </div>
-
-    <div class="form1">
-        <label for="Facebook">facebook link:</label>
-        <input type="text"  name="Facebook"><br><br>
-    </div>
-    
-    <div class="form1">
-        <label for="instagram">instagram link:</label>
-        <input type="text"  name="instagram"><br><br>
-    </div>
-
-    <div class="form1">
-        <label for="snapchat">snapchat link:</label>
-        <input type="text"  name="snapchat"><br><br>
-    </div>
-    
-    <div class="form1">
-        <label for="category">Category/Niche:</label>
-        <input type="text" id="category" name="category"><br><br>
-    </div>
-    
-    <div class="form1">
-        <label for="bio">Bio/Description:</label><br>
-        <textarea id="bio" name="bio" rows="4" cols="50"></textarea><br><br>
-    </div>
-    
-    <div class="form1">
-        <input type="checkbox" id="termsCheckbox" name="termsCheckbox" required>
-        <label for="termsCheckbox">I agree to the Terms and Conditions</label><br><br>
-    </div>
-    
-    <button style="text-align:center; margin-left:300px; margin-bottom:30px;;" type="submit">Submit</button>
-    <p class="form1">Already have an account? <a href="/influencer">Sign in</a></p>
-</form>
-
     </div>   
 </body>
 </html>

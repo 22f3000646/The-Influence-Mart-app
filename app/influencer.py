@@ -1,62 +1,53 @@
 from flask import Flask, render_template, Blueprint, request,flash,session,redirect,url_for
-from models import db, Influencer,User
+from models import *
 influencer=Blueprint("influencer",__name__)
-influencer.secret_key='asdfg@12345t'
+import bcrypt
+from forms import Registeration
 @influencer.route('/',methods=['GET','POST'])
-def Influencer():
+def Login():
     if request.method == 'POST':
         user1=request.form['username']
         passw=request.form['password']
-        user = User.query.filter_by(username=user1).first()
-        if user and user.check_password(passw):
+        user = Influencer.query.filter_by(username=user1).first()
+        if user and passw == bcrypt.gensalt(user.password).decode('utf-8'):
             session['user']=user.username
             return redirect(url_for('influencer.dashboard'))
         else:
             flash('Invalid Credentials')
-            return redirect(url_for('influencer.influencer'))
+            return redirect(url_for('influencer.Login'))
+    return render_template('influencer_login.html')
         
 
-@influencer.route("/register", methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        name = request.form['fullName']
-        username = request.form['username']
-        email = request.form['email']
-        phone = request.form['phone']
-        social_media = request.form.getlist('social_media[]')
-        social_media_str = ','.join(social_media)
-        youtube_followers = request.form.get('youtube_followers', '')
-        instagram_followers = request.form.get('instagram_followers', '')
-        facebook_followers = request.form.get('facebook_followers', '')
-        snapchat_followers = request.form.get('snapchat_followers', '')
-        if youtube_followers:
-            youtube_followers = int(youtube_followers)
-        if instagram_followers:
-            instagram_followers = int(instagram_followers)
-        if facebook_followers:
-            facebook_followers = int(facebook_followers)
-        if snapchat_followers:
-            snapchat_followers = int(snapchat_followers)
-        category = request.form.get('category', '')
-        number = request.form.get('followers', '')
-        bio = request.form.get('bio', '')
-
-        user = Influencer(full_name=name,username=username,email=email,phone=phone,
-                          platform=social_media_str,insta=instagram_followers,youtube=youtube_followers,
-                          facebook=facebook_followers,snapchat=snapchat_followers,niche=category,
-                          followers=number,bio=bio)
-        db.session.add(user)
-        db.session.commit()
-        flash('Account created succesfully')
-        return render_template('influencer_login.html')
-    return render_template('influencer_registration.html')
+@influencer.route("/registration", methods=['GET', 'POST'])
+def registration():
+    form = Registeration()
+    if form.validate_on_submit():
+            existing_username = Influencer.query.filter_by(username =form.username.data).first()
+            if existing_username:
+                flash('username already exist')
+                return render_template('influencer_registration.html',form=form)
+            hashed_password = bcrypt.hashpw(form.password.data.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+            new_influencer = Influencer(full_name=form.full_name.data,
+            username=form.username.data,
+            password=hashed_password,
+            email= form.email.data,
+            phone=form.phone.data,
+            bio=form.bio.data,
+            niche=form.niche.data)
+              
+            db.session.add(new_influencer)
+            db.session.commit()
+            flash('Account created succesfully')
+            return render_template('sponsor_registration.html',form=form)
+    
+    return render_template('sponsor_registration.html',form=form)
 
 @influencer.route('/dashboard')
 def dashboard():
     if 'user' not in session:
-        return redirect(url_for('influencer.influencer'))
-    user=User.query.filter_by(username=session['user']).first()
-    user=User.query.filter_by(username=session['user']).first()
+        return redirect(url_for('influencer.Login'))
+    user=Influencer.query.filter_by(username=session['user']).first()
+    user=Influencer.query.filter_by(username=session['user']).first()
     return render_template("/influencer_dashboard.html")
 
 
