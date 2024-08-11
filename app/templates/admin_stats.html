@@ -1,5 +1,86 @@
 {% extends 'admin dashboard.html' %}
-{% block title %}find{% endblock %}
+{% block title %}Stats{% endblock %}
 {% block content %}
 
+<div class="container">
+    <div class="chart-container">
+        <canvas id="activeSponsorsChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="flaggedSponsorsChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="campaignStatusChart"></canvas>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+<script>
+    const ctxActiveSponsors = document.getElementById('activeSponsorsChart').getContext('2d');
+    new Chart(ctxActiveSponsors, {
+        type: 'bar',
+        data: {
+            labels: ['Active', 'Inactive'],
+            datasets: [{
+                label: 'Active vs. Inactive Sponsors',
+                data: [{{ active_sponsors_count }}, {{ inactive_sponsors_count }}],
+                backgroundColor: ['#4caf50', '#f44336']
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    const ctxFlaggedSponsors = document.getElementById('flaggedSponsorsChart').getContext('2d');
+    new Chart(ctxFlaggedSponsors, {
+        type: 'bar',
+        data: {
+            labels: ['Flagged Sponsors', 'Flagged Influencers'],
+            datasets: [{
+                label: 'Flagged Entities',
+                data: [{{ flagged_sponsors_count }}, {{ flagged_influencers_count }}],
+                backgroundColor: ['#ff9800', '#9c27b0']
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    const ctxCampaignStatus = document.getElementById('campaignStatusChart').getContext('2d');
+    new Chart(ctxCampaignStatus, {
+        type: 'bar',
+        data: {
+            labels: ['Active', 'Completed'],
+            datasets: [{
+                label: 'Active vs. Completed Campaigns',
+                data: [{{ active_campaigns_count }}, {{ completed_campaigns_count }}],
+                backgroundColor: ['#2196f3', '#9c27b0']
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
 {% endblock %}
+

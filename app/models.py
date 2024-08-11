@@ -32,7 +32,7 @@ class Influencer(db.Model):
     niche = db.Column(db.String(50))
     role =db.Column(db.String(20) ,default ='Influencer')
     flagged = db.Column(db.String(20) ,default='False')
-            
+    reason = db.Column(db.String(50))        
     platform = db.relationship('Social_media',backref = 'influencer')
     ad_request = db.relationship('Ad_request',backref = 'influencer',secondary ='association')
     
@@ -49,8 +49,8 @@ class Sponsor(db.Model):
     phone = db.Column(db.String(20)) 
     password = db.Column(db.String(50))
     role = db.Column(db.String(20) ,default='sponsor')
-    flagged = db.Column(db.String(20) ,default='False')
-    
+    flagged = db.Column(db.Boolean ,default=False)
+    campaign = db.relationship('Campaign',backref='sponsor')
     
 class Campaign(db.Model):
     sponsor_id = db.Column(db.Integer,db.ForeignKey('sponsor.sponsor_id'))
@@ -60,11 +60,10 @@ class Campaign(db.Model):
     campaign_title = db.Column(db.String(20))
     category = db.Column(db.String(20))
     about = db.Column(db.String(100))
-    total_request = db.Column(db.Integer)
     status = db.Column(db.String(10))
     payment = db.Column(db.String(10) )
     payment_id = db.Column(db.Integer)
-    approvement = db.Column(db.String(10),default='False')
+    flag = db.Column(db.Boolean ,default=False)
     
     request = db.relationship('Ad_request',backref='campaign')
         

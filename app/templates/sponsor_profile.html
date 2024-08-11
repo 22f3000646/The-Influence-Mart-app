@@ -1,5 +1,19 @@
 {% extends 'base_sponsor_dashboard.html' %}
 {% block title %}profile{% endblock %}
 {% block content %}
+<h1>Sponsor Profile</h1>
+
+<div class="profile-info">
+    <h2>Profile Information</h2>
+    <p><strong>Company Name:</strong> {{ Sponsor.companyname }}</p>
+    <p><strong>Username:</strong> {{ Sponsor.username }}</p>
+    <p><strong>Email:</strong> {{ Sponsor.email }}</p>
+    <p><strong>Phone:</strong> {{ Sponsor.phone }}</p>
+    <p><strong>Role:</strong> {{ Sponsor.role }}</p>
+    <p><strong>Flagged:</strong> {{ 'Yes' if Sponsor.flagged else 'No' }}</p>
+    <p><strong>Reason:</strong> {{ Sponsor.reason or 'N/A' }}</p>
+</div>
+
+
 
 {% endblock %}

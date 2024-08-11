@@ -1,20 +1,102 @@
 {% extends 'admin dashboard.html' %}
-{% block title %}find{% endblock %}
+{% block title %}Find{% endblock %}
 {% block content %}
-<table>
-    <thead>
+<div class="find">
+  <h1>Find</h1>
+  <form method="POST" action="{{ url_for('Admin.dashboard1') }}">
+      <input type="text" name="search" value="{{ search }}" placeholder="Search..." required>
+      <button type="submit">Search</button>
+  </form>
+</div>
+<div class="container">
+  <h2>Sponsors</h2>
+  <table>
+      <thead>
           <tr>
-            <th>Name of sponsors</th>
+              <th>Company Name</th>
+              <th>Email</th>
+              <th>Action</th>
           </tr>
-    </thead>
-    <tbody>
-        {% for users in users %}
+      </thead>
+      <tbody>
+          {% if sponsors %}
+              {% for sponsor in sponsors %}
+              <tr>
+                  <td>{{ sponsor.companyname }}</td>
+                  <td>{{ sponsor.email }}</td>
+                  <td>
+                      <form method="POST" action="{{ url_for('Admin.flag_sponsor', sponsor_id=sponsor.sponsor_id) }}">
+                          <button type="submit">Flag</button>
+                      </form>
+                  </td>
+              </tr>
+              {% endfor %}
+          {% else %}
           <tr>
-            <td>
-                 {{users.username}}
-            </td>
+              <td colspan="3" class="no-results">No sponsors found</td>
           </tr>
-          {% endfor %}
-    </tbody>
-</table>
+          {% endif %}
+      </tbody>
+  </table>
+
+  <h2>Campaigns</h2>
+  <table>
+      <thead>
+          <tr>
+              <th>Campaign Title</th>
+              <th>Category</th>
+              <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% if campaigns %}
+              {% for campaign in campaigns %}
+              <tr>
+                  <td>{{ campaign.campaign_title }}</td>
+                  <td>{{ campaign.category }}</td>
+                  <td>
+                      <form method="POST" action="{{ url_for('Admin.flag_campaign', campaign_id=campaign.campaign_id) }}">
+                          <button type="submit">Flag</button>
+                      </form>
+                  </td>
+              </tr>
+              {% endfor %}
+          {% else %}
+          <tr>
+              <td colspan="3" class="no-results">No campaigns found</td>
+          </tr>
+          {% endif %}
+      </tbody>
+  </table>
+
+  <h2>Influencers</h2>
+  <table>
+      <thead>
+          <tr>
+              <th>Username</th>
+              <th>Full Name</th>
+              <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% if influencers %}
+              {% for influencer in influencers %}
+              <tr>
+                  <td>{{ influencer.username }}</td>
+                  <td>{{ influencer.full_name }}</td>
+                  <td>
+                      <form method="POST" action="{{ url_for('Admin.flag_influencer', influencer_id=influencer.influencer_id) }}">
+                          <button type="submit">Flag</button>
+                      </form>
+                  </td>
+              </tr>
+              {% endfor %}
+          {% else %}
+          <tr>
+              <td colspan="3" class="no-results">No influencers found</td>
+          </tr>
+          {% endif %}
+      </tbody>
+  </table>
+</div>
 {% endblock %}

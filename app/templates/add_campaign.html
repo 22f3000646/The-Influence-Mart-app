@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Campaign</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        div {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        textarea,
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        textarea {
+            resize: vertical;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left:300px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .errors {
+            color: red;
+            font-size: 14px;
+        }
+        a {
+            text-decoration: none;
+            color: #3498db;
+            font-size: 16px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Campaign</h1>
+
+        <form method="POST" action="{{ url_for('sponsor.campaign') }}">
+            {{ form.hidden_tag() }}
+            
+            <div>
+                {{ form.campaign_title.label }}<br>
+                {{ form.campaign_title(size=32) }}
+                <div class="errors">
+                    {% for error in form.campaign_title.errors %}
+                        [{{ error }}]<br>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div>
+                {{ form.category.label }}<br>
+                {{ form.category(size=32) }}
+                <div class="errors">
+                    {% for error in form.category.errors %}
+                        [{{ error }}]<br>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div>
+                {{ form.about.label }}<br>
+                {{ form.about(rows=5, cols=40) }}
+                <div class="errors">
+                    {% for error in form.about.errors %}
+                        [{{ error }}]<br>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div>
+                {{ form.start_date.label }}<br>
+                {{ form.start_date() }}
+                <div class="errors">
+                    {% for error in form.start_date.errors %}
+                        [{{ error }}]<br>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div>
+                {{ form.end_date.label }}<br>
+                {{ form.end_date() }}
+                <div class="errors">
+                    {% for error in form.end_date.errors %}
+                        [{{ error }}]<br>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div   >
+                <button>{{ form.submit() }}</button>
+            </div>
+        </form>
+
+        <a href="{{ url_for('sponsor.campaigns') }}">Back to Campaigns</a>
+    </div>
+</body>
+</html>

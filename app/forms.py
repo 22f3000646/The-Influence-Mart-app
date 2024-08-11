@@ -25,12 +25,12 @@ class sponsor_registration(FlaskForm):
     confirm_password = PasswordField('Confirm Password',validators =[DataRequired(),EqualTo('password',message='both password should be same')])    
     submit =SubmitField('Sign up')
 class CampaignForm(FlaskForm):
-    campaign_title = StringField('Campaign Title',validators=[DataRequired(),Length(max=30)])
-    category = StringField('Category',validators=[Length(max=10)])
-    about = TextAreaField('About',validators=[DataRequired(),Length(max=100)])
-    start_date = DateField('Start Date',format='%Y-%m-%d',validators=[DataRequired()])
-    end_date = DateField('End Date',format='%Y-%m-%d',validators=[DataRequired()])
-    submit = SubmitField('Create Campaign')
+    campaign_title = StringField('campaign Title',validators=[DataRequired(),Length(max=30)])
+    category = StringField('category',validators=[Length(max=10)])
+    about = TextAreaField('about',validators=[DataRequired(),Length(max=100)])
+    start_date = DateField('start Date',format='%Y-%m-%d',validators=[DataRequired()])
+    end_date = DateField('end Date',format='%Y-%m-%d',validators=[DataRequired()])
+    submit = SubmitField('create Campaign')
 
 class AdRequestForm(FlaskForm):
     campaign_id = IntegerField('Campaign ID',validators=[DataRequired()])
