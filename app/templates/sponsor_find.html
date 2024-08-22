@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Influencers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .search-bar {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .search-bar input[type="text"] {
+            width: 100%;
+            max-width: 600px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .search-bar button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .search-bar button:hover {
+            background-color: #2980b9;
+        }
+        .influencer-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .influencer-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: #333;
+        }
+        .influencer-card:hover {
+            background: #f9f9f9;
+            border-color: #bbb;
+        }
+        .influencer-card h3 {
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+        .influencer-card p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .influencer-card span {
+            font-weight: bold;
+        }
+        .no-results {
+            text-align: center;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Find Influencers</h1>
+
+        <div class="search-bar">
+            <form method="GET" action="{{ url_for('find.find') }}">
+                <input type="text" name="search" placeholder="Search for influencers..." value="{{ request.args.get('search', '') }}">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <div class="influencer-list">
+            {% if influencers %}
+                {% for influencer, follower_count in influencers %}
+                <a href="{{ url_for('influencer.profile', username=influencer.username) }}" class="influencer-card">
+                    <h3>{{ influencer.full_name }}</h3>
+                    <p><span>Social Media Followers:</span> {{ follower_count if follower_count is not none else 'N/A' }}</p>
+                    <p><span>Email:</span> {{ influencer.email }}</p>
+                    <p><span>Phone:</span> {{ influencer.phone }}</p>
+                    <p><span>Bio:</span> {{ influencer.bio[:50] }}{{ '...' if influencer.bio|length > 50 else '' }}</p>
+                </a>
+                {% endfor %}
+            {% else %}
+                <p class="no-results">No influencers found.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

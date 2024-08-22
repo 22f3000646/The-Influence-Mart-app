@@ -36,6 +36,8 @@ def dashboard():
                            flagged_users = flagged_users,
                            flagged_campaigns =flagged_campaigns 
                            )
+
+    
 @adminbp.route("/find",methods=['GET','POST'])
 def dashboard1():
     if 'user' not in session:
