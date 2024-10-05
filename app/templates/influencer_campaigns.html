@@ -1,0 +1,38 @@
+{% extends 'influencer_dashboard.html' %}
+{% block title %}campaigns {% endblock %}
+{% block content %}
+    <section class="campaigns">
+        <h2>Campaigns</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Campaign Title</th>
+                    <th>Company Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for campaign in campaigns %}
+                    <tr>
+                        <td>{{ campaign.campaign_title }}</td>
+                        <td>{{ campaign.sponsor.companyname }}</td>
+                        <td>{{ campaign.start_date.strftime('%Y-%m-%d') }}</td>
+                        <td>{{ campaign.end_date.strftime('%Y-%m-%d') }}</td>
+                        <td>{{ campaign.status }}</td>
+                        <td>
+                            <form action="{{ url_for('influencer.send_ad_request', campaign_id=campaign.campaign_id) }}" method="POST">
+                                <label for="remarks_{{ campaign.campaign_id }}">Remarks:</label>
+                                <textarea id="remarks_{{ campaign.campaign_id }}" name="remarks" rows="3" placeholder="Enter your remarks here..."></textarea>
+                                <button type="submit">Send Ad Request</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+{% endblock %}

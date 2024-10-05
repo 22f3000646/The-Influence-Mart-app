@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Influencers</title>
+{% extends 'base_sponsor_dashboard.html' %}
+{% block title %}find{% endblock %}
+{% block content %}
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -85,7 +82,7 @@
         <h1>Find Influencers</h1>
 
         <div class="search-bar">
-            <form method="GET" action="{{ url_for('find.find') }}">
+            <form method="GET" action="{{ url_for('sponsor.find') }}">
                 <input type="text" name="search" placeholder="Search for influencers..." value="{{ request.args.get('search', '') }}">
                 <button type="submit">Search</button>
             </form>
@@ -107,5 +104,4 @@
             {% endif %}
         </div>
     </div>
-</body>
-</html>
+{% endblock %}

@@ -1,9 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Document</title>
+    <title>{% block title %}Influencer Dashboard{% endblock %}</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        section h2 {
+            margin-top: 0;
+        }
+
+        .profile p, .social-media ul, .campaigns table, .campaigns form {
+            margin: 10px 0;
+        }
+
+        .profile p {
+            line-height: 1.6;
+        }
+
+        .social-media ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .social-media ul li {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        .campaigns table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .campaigns table th, .campaigns table td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .campaigns table th {
+            background-color: #e9ecef;
+        }
+
+        .campaigns form {
+            margin-top: 20px;
+        }
+
+        .campaigns form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .campaigns form input, .campaigns form textarea, .campaigns form button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+        }
+
+        footer {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
-    <h1>this is influencer dshboard</h1>
+    
+    <header>
+        <h1>{{ influencer.full_name }}'s Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('influencer.dashboard') }}">Profile</a></li>
+                <li><a href="{{ url_for('influencer.campaigns') }}">Campaigns</a></li>
+                <li><a href="{{ url_for('influencer.logout') }}">Log out</a></li>
+            </ul>
+        </nav>
+        {% block content %}
+    </header>
+    
+    <main>
+        <section class="profile">
+            <h2>Profile Information</h2>
+            <p><strong>Username:</strong> {{ influencer.username }}</p>
+            <p><strong>Email:</strong> {{ influencer.email }}</p>
+            <p><strong>Phone:</strong> {{ influencer.phone }}</p>
+            <p><strong>Bio:</strong> {{ influencer.bio }}</p>
+            <p><strong>Niche:</strong> {{ influencer.niche }}</p>
+            <p><strong>Role:</strong> {{ influencer.role }}</p>
+            <p><strong>Flagged:</strong> {{ influencer.flagged }}</p>
+            {% if influencer.reason %}
+                <p><strong>Reason for Flag:</strong> {{ influencer.reason }}</p>
+            {% endif %}
+        </section>
+
+        <section class="social-media">
+            <h2>Social Media Platforms</h2>
+            <ul>
+                {% for platform in influencer.platform %}
+                    <li>
+                        <strong>{{ platform.Platform }}:</strong> {{ platform.follower_count }} followers
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        
+    </main>
+    {% endblock %}
+    <footer>
+        <p>&copy; 2024 Influencer Dashboard</p>
+    </footer>
 </body>
 </html>

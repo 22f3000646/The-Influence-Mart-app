@@ -24,7 +24,7 @@
 <div class="form">
         
     <p class="form1" style="font-size:30px; font-style:italic;">login to your Influencers account</p>
-<form method="POST" action="/influencer/">
+<form method="POST" action="{{url_for('influencer.Login')}}">
     <div class="form1" >
         <input type="username" name="username" placeholder="please enter your username">
         <label>username</label>
@@ -36,13 +36,13 @@
 </div>
 
 <div class="form1">
-    <button class="button1" type="button">Log in</button>
+    <button class="button1" type="submit">Log in</button>
     <a href="#!">Forgot password?</a>
 </div>
 
 <div class="form1" >
     <p style="font-weight:bold;">Don't have an account?</p>
-      <a href="{{ url_for('influencer.registration') }}" ><button type="button" class="button1">Create new influencer account</button></a>
+      <a href="{{url_for('influencer.registration')}}" ><button type="button" class="button1">Create new influencer account</button></a>
 
 </form>
 
